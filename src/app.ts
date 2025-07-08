@@ -6,13 +6,9 @@ import cors from "cors";
 export const app: Application = express();
 
 app.use(express.json());
+app.use(cors({origin: "http://localhost:5173"}))
 app.use("/books", bookRouter)
 app.use("/borrow", borrowRouter)
-app.use(
-  cors({
-    origin: ['http://localhost:5173']
-   })
-);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Library Management System Server is running");
