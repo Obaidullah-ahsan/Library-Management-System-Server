@@ -10,11 +10,14 @@ const borrow_controller_1 = require("./app/controllers/borrow.controller");
 const cors_1 = __importDefault(require("cors"));
 exports.app = (0, express_1.default)();
 exports.app.use(express_1.default.json());
+exports.app.use((0, cors_1.default)({
+    origin: [
+        "http://localhost:5173",
+        "https://library-management-system-client-kappa.vercel.app",
+    ],
+}));
 exports.app.use("/books", book_controller_1.bookRouter);
 exports.app.use("/borrow", borrow_controller_1.borrowRouter);
-exports.app.use((0, cors_1.default)({
-    origin: ['http://localhost:5173']
-}));
 exports.app.get("/", (req, res) => {
     res.send("Library Management System Server is running");
 });

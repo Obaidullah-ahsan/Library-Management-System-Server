@@ -4,7 +4,7 @@ import { Borrow } from "../models/borrow.model";
 
 export const borrowRouter = express.Router();
 
-borrowRouter.get("/", async (req: Request, res: Response) => {
+borrowRouter.get("/borrow-summary", async (req: Request, res: Response) => {
   const data = await Borrow.aggregate([
     { $group: { _id: "$book", totalQuantity: { $sum: "$quantity" } } },
     {

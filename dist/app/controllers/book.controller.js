@@ -17,17 +17,7 @@ const express_1 = __importDefault(require("express"));
 const book_model_1 = require("../models/book.model");
 exports.bookRouter = express_1.default.Router();
 exports.bookRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { filter: genre, sortBy, limit } = req.query;
-    let filter = {};
-    if (genre) {
-        filter.genre = genre;
-    }
-    const parsedLimit = limit ? parseInt(limit) : 10;
-    const sortCondition = {};
-    if (sortBy) {
-        sortCondition[sortBy] = 1; // ascending
-    }
-    const data = yield book_model_1.Books.find(filter).sort(sortCondition).limit(parsedLimit);
+    const data = yield book_model_1.Books.find({});
     res.status(201).json({
         success: true,
         message: "Books retrieved successfully",
@@ -43,9 +33,10 @@ exports.bookRouter.get("/:bookId", (req, res) => __awaiter(void 0, void 0, void 
         data,
     });
 }));
-exports.bookRouter.put("/:bookId", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.bookRouter.patch("/:bookId", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { bookId } = req.params;
-    const body = req.body;
+    const body = req.body.data;
+    console.log(body);
     const data = yield book_model_1.Books.findByIdAndUpdate(bookId, body, { new: true });
     res.status(201).json({
         success: true,

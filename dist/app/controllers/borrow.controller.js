@@ -17,7 +17,7 @@ const express_1 = __importDefault(require("express"));
 const book_model_1 = require("../models/book.model");
 const borrow_model_1 = require("../models/borrow.model");
 exports.borrowRouter = express_1.default.Router();
-exports.borrowRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.borrowRouter.get("/borrow-summary", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield borrow_model_1.Borrow.aggregate([
         { $group: { _id: "$book", totalQuantity: { $sum: "$quantity" } } },
         {

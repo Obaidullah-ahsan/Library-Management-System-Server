@@ -14,11 +14,6 @@ The Library Management API is a full-featured backend system designed to manage 
 
 - **Inventory Control:** Automatic updates to book availability and copy counts during borrowing operations
 
-### 🔍 Filtering, Sorting, and Limiting
-
-- **Filtering:** Filter books by genre (e.g., `?filter=FICTION`)
-- **Sorting:** Sort by any field (e.g., `?sortBy=createdAt&sort=desc`)
-- **Limiting:** Limit results (e.g., `?limit=5`)
 
 ## 🧑‍💻 Tech Stack
 
@@ -32,8 +27,8 @@ The Library Management API is a full-featured backend system designed to manage 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/library-management-server.git
-cd library-management-server
+git clone https://github.com/Obaidullah-ahsan/Library-Management-System-Server.git
+cd Library-Management-System-Server
 
 # Install dependencies
 npm install

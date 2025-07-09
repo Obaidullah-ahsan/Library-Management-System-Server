@@ -4,17 +4,7 @@ import { Books } from "../models/book.model";
 export const bookRouter = express.Router();
 
 bookRouter.get("/", async (req: Request, res: Response) => {
-  const { filter: genre, sortBy, limit } = req.query;
-  let filter: any = {};
-  if (genre) {
-    filter.genre = genre;
-  }
-  const parsedLimit = limit ? parseInt(limit as string) : 10;
-  const sortCondition: any = {};
-  if (sortBy) {
-    sortCondition[sortBy as string] = 1; // ascending
-  }
-  const data = await Books.find(filter).sort(sortCondition).limit(parsedLimit);
+  const data = await Books.find({})
   res.status(201).json({
     success: true,
     message: "Books retrieved successfully",
